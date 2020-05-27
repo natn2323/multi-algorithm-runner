@@ -1,18 +1,17 @@
 import sys 
 
-def DotProduct(list1, list2):
-    """Description: Function to calculate dot products of given lists of numbers.
+def calculateDotProduct(list1, list2):
+    """
+    Description: Function to calculate dot products of given vectors.
+    
     Input:
         - list1 - a List containing numbers
         - list2 - a List containing numbers
-    Output:
-        - return a number (ex. 12.0)
-    Example command:
-        - python dotproduct.py '1,2,3' '2,3,4'
-    """
 
-    if len(list1) != len(list2):
-        raise ValueError("The lists don't match in length.")
+    Returns: A number.
+
+    Example command for CLI: python dotproduct.py '1,2,3' '2,3,4'
+    """
 
     # Establish a variable to keep track of the running-sum
     S = []  
@@ -29,24 +28,40 @@ def DotProduct(list1, list2):
     return S
 
 hasError = False
-try:
-    list1 = [float(x) for x in sys.argv[1].split(',')]
-    list2 = [float(x) for x in sys.argv[2].split(',')]
-except ValueError:
-    print('Invalid user input: an input was not a number.')
-    hasError = True
-except:
-    print('Invalid user input.')
-    hasError = True
+arg1Length = arg2Length = 0
 
-if hasError is False:
-    try:
-        print(DotProduct(list1, list2))
-    except Exception as e:
-        print('Something went wrong: ' + str(e))
-
-    sys.stdout.flush()
-    sys.exit(0)
+if (len(sys.argv) - 1) != 2:
+    print('Missing arguments. Expected 2, but found 1.')
+    hasError = True
 else:
-    sys.stdout.flush()
-    sys.exit(1)
+    arg1Length = len(sys.argv[1])
+    arg2Length = len(sys.argv[2])
+
+if not hasError and (arg1Length == 0 or arg2Length == 0):
+    print('Invalid user input: a list was empty.')
+    hasError = True
+
+if not hasError:
+    try:
+        list1 = [float(x) for x in sys.argv[1].split(',')]
+        list2 = [float(x) for x in sys.argv[2].split(',')]
+    except ValueError:
+        print('Invalid user input: a list entry was not a number.')
+        hasError = True
+
+if not hasError and (len(list1) != len(list2)):
+    print('Invalid user input: lists do not match in length.')
+    hasError = True
+
+if not hasError:
+    try:
+        print(calculateDotProduct(list1, list2))
+    except ValueError as e:
+        print(str(e))
+    except Exception as e:
+        print('Something went wrong: ' + str(e) + '.')
+        sys.stdout.flush()
+        sys.exit(1)
+
+sys.stdout.flush()
+sys.exit(0)

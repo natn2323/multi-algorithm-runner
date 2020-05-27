@@ -1,11 +1,23 @@
+const path = require('path');
+
+const env = process.env.NODE_ENV || 'development';
+const port = process.env.PORT || 3000;
+
 const express = require('express');
 const app = express();
-const port = 3000;
 
 app.use(express.json());
 
+app.use(express.static('../marf/dist/marf'));
+
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    const rootPath = env === 'development' ? path.join(__dirname, '../marf/src/index.html') : path.join(__dirname, '../marf/dist/marf');
+
+    const options = {
+        root: rootPath
+    };
+
+    return res.sendFile('index.html', options);
 });
 
 app.post('/', (req, res) => {
@@ -13,7 +25,7 @@ app.post('/', (req, res) => {
         res.status(200).json(value)
     })
     .catch((error) => {
-        res.status(400).json(error.message);
+        res.status(500).json(error.message);
     });
 })
 
@@ -40,6 +52,7 @@ function runDotProduct(list1, list2) {
         pythonProcess.stdout.on('data', (data) => {
             let formattedData = parseFloat(data);
     
+            // If formatted data is not a number, then there wasn't a result, so we attach the caught error message
             if (isNaN(formattedData)) {
                 value.message = data.toString();
             }
