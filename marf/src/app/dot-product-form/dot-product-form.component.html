@@ -1,0 +1,16 @@
+<form class="form-group" #f="ngForm" (ngSubmit)="onSubmit()">
+    <div class="vector">
+        <input  *ngFor="let row of vector1; let i = index;" type="number" name="vector1_{{i}}" [(ngModel)]="row.value">
+    </div>
+
+    <div class="vector">
+        <input *ngFor="let row of vector2; let j = index;" type="number" name="vector2_{{j}}" [(ngModel)]="row.value">
+    </div>
+
+    <input class="counter" name="counter" type="number" [(ngModel)]="m" (ngModelChange)="vectorLengthOnChange($event)">
+    
+    <button type="button" (click)="resetAllEntries()">Reset</button>
+    <button type="button" (click)="addRow()">Add row</button>
+    <button type="button" (click)="deleteRow()">Delete row</button>
+    <button type="submit">Submit</button>
+</form>
