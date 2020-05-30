@@ -7,18 +7,23 @@ import { AppComponent } from './app.component';
 import { DotProductFormComponent } from './dot-product-form/dot-product-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { DotProductResultsComponent } from './dot-product-results/dot-product-results.component';
+import { AngularMaterialModule } from 'src/app/app-material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DotProductFormComponent
+    DotProductFormComponent,
+    DotProductResultsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent],

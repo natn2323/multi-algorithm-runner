@@ -42,7 +42,8 @@ Invoke-WebRequest -Uri http://localhost:3000/ -Method POST -Body ($params|Conver
 function runDotProduct(list1, list2) {
     return new Promise((resolve, reject) => {
         let value = {
-            data: null, 
+            input: [list1, list2],
+            data: null,
             message: null
         };
 

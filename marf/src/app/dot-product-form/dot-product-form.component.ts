@@ -1,6 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, ObservableInput } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 @Component({
@@ -17,19 +17,30 @@ export class DotProductFormComponent implements OnInit {
 
   vector1 = [{'value': 0}];
   vector2 = [{'value': 0}];
+  vector1NumberList: number[] = null;
+  vector2NumberList: number[] = null;
   m: number = 1;
+  dotProductResult: string = '';
+  errorMessageFromAPI: string = '';
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void { }
 
-  addRow() {
+  shouldShowResult(): boolean {
+    const haveResult = this.dotProductResult !== '' ? true : false;
+    const haveError = this.errorMessageFromAPI !== '' ? true: false;
+    // return haveResult || haveError;
+    return true;
+  }
+
+  addRow(): void {
     this.vector1.push({'value': 0});
     this.vector2.push({'value': 0});
     this.m++;
   }
 
-  deleteRow() {
+  deleteRow(): void {
     if (this.vector1.length > 1 && this.vector2.length > 1) {
       this.vector1.pop();
       this.vector2.pop();
@@ -37,7 +48,7 @@ export class DotProductFormComponent implements OnInit {
     }
   }
 
-  resetAllEntries() {
+  resetAllEntries(): void {
     // // Note: introduce a bug for Jae to find
     // this.vector1.fill({'value': 0});
     // this.vector2.fill({'value': 0});
@@ -56,36 +67,36 @@ export class DotProductFormComponent implements OnInit {
     }
   }
 
-  private handleError(error: HttpErrorResponse) {
+  // This function was taken from an online source.
+  private handleError(error: HttpErrorResponse): ObservableInput<any> {
+    let errorMessage: string = '';
+
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
+      // console.error('An error occurred:', error.error.message);
+      errorMessage = error.error.message;
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+      // console.error(
+        // `Backend returned code ${error.status}, ` +
+        // `body was: ${error.error}`);
+      errorMessage = error.error;
     }
     // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
+    // return throwError(
+    //   'Something bad happened; please try again later.');
+    return throwError(errorMessage);
   };
 
-  onSubmit() {
+  onSubmit(): boolean {
     // TODO: Make sure that the submission cannot occur while the vectorLengthOnChange function is being run
-
-    const vector1: number[] = this.vector1.map((element) => element.value);
-    const vector2: number[] = this.vector2.map((element) => element.value);
+    this.vector1NumberList = this.vector1.map((element) => element.value);
+    this.vector2NumberList = this.vector2.map((element) => element.value);
 
     const data = {
-      list1: vector1,
-      list2: vector2
-    };
-
-    const options = {
-      observe: 'body|response',
-      responseType: 'json'  
+      list1: this.vector1NumberList,
+      list2: this.vector2NumberList
     };
 
     const requestHeaders = new HttpHeaders({
@@ -95,14 +106,20 @@ export class DotProductFormComponent implements OnInit {
     // TODO: Send a request to server
     this.http.post(this.configUrl, data, { headers: requestHeaders, observe: 'response', responseType: 'json' })
       .pipe(catchError(this.handleError))
-      .subscribe(res => {
-        console.log(res);
-      })
+      .subscribe(
+        res => {
+          this.dotProductResult = res.body.data.toString();
+          this.errorMessageFromAPI = '';
+        },
+        err => {
+          this.dotProductResult = '';
+          this.errorMessageFromAPI = err;
+        });
 
     return false;
   }
 
-  vectorLengthOnChange(event) {
+  vectorLengthOnChange(event): void {
     if (this.m > 0) {
       setTimeout(() => {
 
@@ -122,4 +139,5 @@ export class DotProductFormComponent implements OnInit {
       }, 1500);
     }
   }
+
 }
