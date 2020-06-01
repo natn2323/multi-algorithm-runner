@@ -1,8 +1,8 @@
 <div class="calculator-container">
     <form class="form-group">
-        <div class="vector">
+        <div class="vector" tabindex="0">
             <div class="vector-label">Vector 1</div>
-            <input  *ngFor="let row of vector1; let i = index;" type="number" name="vector1_{{i}}" [(ngModel)]="row.value">
+            <input *ngFor="let row of vector1; let i = index;" type="number" name="vector1_{{i}}" [(ngModel)]="row.value">
         </div>
 
         <div class="vector">
