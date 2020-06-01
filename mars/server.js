@@ -27,7 +27,7 @@ app.post('/', (req, res) => {
     .catch((error) => {
         res.status(500).json(error.message);
     });
-})
+});
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
@@ -42,7 +42,7 @@ Invoke-WebRequest -Uri http://localhost:3000/ -Method POST -Body ($params|Conver
 function runDotProduct(list1, list2) {
     return new Promise((resolve, reject) => {
         let value = {
-            data: null, 
+            data: null,
             message: null
         };
 
@@ -70,4 +70,5 @@ function runDotProduct(list1, list2) {
             }
         })
     });
+
 }
