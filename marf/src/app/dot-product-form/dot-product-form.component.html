@@ -1,32 +1,34 @@
 <div class="calculator-container">
-    <form class="form-group">
+    <form class="vector-group">
         <div class="vector" tabindex="0">
             <div class="vector-label">Vector 1</div>
-            <input *ngFor="let row of vector1; let i = index;" type="number" name="vector1_{{i}}" [(ngModel)]="row.value">
+            <input (keydown)="onInputKeyDown($event)" *ngFor="let row of vector1; let i = index;" type="number" name="vector1_{{i}}" [(ngModel)]="row.value">
         </div>
 
-        <div class="vector">
+        <div class="vector" tabindex="0">
             <div class="vector-label">Vector 2</div>
-            <input *ngFor="let row of vector2; let j = index;" type="number" name="vector2_{{j}}" [(ngModel)]="row.value">
-        </div> 
+            <input (keydown)="onInputKeyDown($event)" *ngFor="let row of vector2; let j = index;" type="number" name="vector2_{{j}}" [(ngModel)]="row.value">
+        </div>
+
+        <button (click)="onSubmit()" style="display: none"></button>
     </form>
 
     <span class="io-group">
         <span class="interactive">
             <div>Number of rows:
-                <input class="counter" name="counter" type="number" [(ngModel)]="m" (ngModelChange)="vectorLengthOnChange($event)">
+                <input #counter class="counter" type="number" min="1" (keydown)="onCounterKeyDown($event)" (keyup.enter)="onCounterEnter(counter.value)" (blur)="onCounterEnter(counter.value)" [(ngModel)]="m">
             </div>
             
             <div>
                 <button mat-button type="button" (click)="resetAllEntries()">Reset row(s)</button>
-                <button mat-button type="button" (click)="addRow()">Add row</button>
-                <button mat-button type="button" (click)="deleteRow()">Delete row</button>
+                <button mat-button type="button" [disabled]="m >= maxNumberOfRows" (click)="addRow()">Add row</button>
+                <button mat-button type="button" [disabled]="m <= minNumberOfRows" (click)="deleteRow()">Delete row</button>
                 <button mat-button type="button" (click)="onSubmit()">Calculate</button>
             </div>
         </span>
 
         <div>
-            <app-dot-product-results *ngIf="shouldShowResult()" [inputs]="[vector1NumberList, vector2NumberList]" [result]="dotProductResult" [errorMessage]="errorMessageFromAPI"></app-dot-product-results>
+            <app-dot-product-results *ngIf="shouldShowResult()" [result]="dotProductResult" [errorMessage]="errorMessageFromAPI"></app-dot-product-results>
         </div>
     </span>
 </div>

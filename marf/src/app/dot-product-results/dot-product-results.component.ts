@@ -6,7 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./dot-product-results.component.less']
 })
 export class DotProductResultsComponent implements OnInit {
-  @Input() inputs: number[][];
   @Input() result: string;
   @Input() errorMessage: string;
 

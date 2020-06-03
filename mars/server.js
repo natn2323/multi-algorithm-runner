@@ -48,7 +48,7 @@ function runDotProduct(list1, list2) {
 
         const spawn = require('child_process').spawn;
         const pythonProcess = spawn('python', ['./dotproduct.py', list1, list2])
-
+        
         pythonProcess.stdout.on('data', (data) => {
             let formattedData = parseFloat(data);
     

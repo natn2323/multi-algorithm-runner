@@ -14,12 +14,14 @@ export class DotProductFormComponent implements OnInit {
   */
   // TODO: Make this hardcoded URL configurable, using environments/environment.<area>.ts files
   configUrl: string = 'http://localhost:4200';
+  minNumberOfRows: number = 1;
+  maxNumberOfRows: number = 25;
+  m: number = 1;
 
   vector1 = [{'value': 0}];
   vector2 = [{'value': 0}];
   vector1NumberList: number[] = null;
   vector2NumberList: number[] = null;
-  m: number = 1;
   dotProductResult: string = '';
   errorMessageFromAPI: string = '';
 
@@ -35,13 +37,15 @@ export class DotProductFormComponent implements OnInit {
   }
 
   addRow(): void {
-    this.vector1.push({'value': 0});
-    this.vector2.push({'value': 0});
-    this.m++;
+    if (this.vector1.length < this.maxNumberOfRows && this.vector2.length < this.maxNumberOfRows) {
+      this.vector1.push({'value': 0});
+      this.vector2.push({'value': 0});
+      this.m++;
+    }
   }
 
   deleteRow(): void {
-    if (this.vector1.length > 1 && this.vector2.length > 1) {
+    if (this.vector1.length > this.minNumberOfRows && this.vector2.length > this.minNumberOfRows) {
       this.vector1.pop();
       this.vector2.pop();
       this.m--;
@@ -49,22 +53,18 @@ export class DotProductFormComponent implements OnInit {
   }
 
   resetAllEntries(): void {
-    // Note: introduce a bug for Jae to find
-    this.vector1.fill({'value': 0});
-    this.vector2.fill({'value': 0});
+    // Assume vector lengths are the same size
+    // TODO: Check that the vector lengths are the same size
+    let vectorLength = this.vector1.length;
 
-    // // Assume vector lengths are the same size
-    // // TODO: Check that the vector lengths are the same size
-    // let vectorLength = this.vector1.length;
-
-    // // Need to avoid passing a reference to the same object,
-    // // otherwise changing one row will change all rows in vector
-    // this.vector1 = new Array(vectorLength);
-    // this.vector2 = new Array(vectorLength);
-    // for (let i = 0; i < vectorLength; i++) { 
-    //   this.vector1[i] = {'value': 0};
-    //   this.vector2[i] = {'value': 0};
-    // }
+    // Need to avoid passing a reference to the same object,
+    // otherwise changing one row will change all rows in vector
+    this.vector1 = new Array(vectorLength);
+    this.vector2 = new Array(vectorLength);
+    for (let i = 0; i < vectorLength; i++) { 
+      this.vector1[i] = {'value': 0};
+      this.vector2[i] = {'value': 0};
+    }
   }
 
   // This function was taken from an online source.
@@ -101,8 +101,14 @@ export class DotProductFormComponent implements OnInit {
       .pipe(catchError(this.handleError))
       .subscribe(
         res => {
-          this.dotProductResult = res.body.data.toString();
-          this.errorMessageFromAPI = '';
+          if (res.body.data !== null) {
+            this.dotProductResult = res.body.data.toString();
+            this.errorMessageFromAPI = '';
+          }
+          else {
+            this.dotProductResult = '';
+            this.errorMessageFromAPI = res.body.message;
+          }
         },
         err => {
           this.dotProductResult = '';
@@ -112,24 +118,52 @@ export class DotProductFormComponent implements OnInit {
     return false;
   }
 
-  vectorLengthOnChange(event): void {
-    if (this.m > 0) {
-      setTimeout(() => {
-        // Assume vector lengths are the same size
-        // TODO: Check that the vector lengths are the same size
-        let vectorLength = this.vector1.length;
-        if (this.m > vectorLength) {
-          for (let i = vectorLength; i < this.m; i++) {
-            this.vector1.push({'value': 0});
-            this.vector2.push({'value': 0});
-          }
-        }
-        else {
-          this.vector1.splice(this.m);
-          this.vector2.splice(this.m);
-        }
-      }, 1500);
+  onInputKeyDown(event: any): boolean {
+    if (event.key === 'e') {
+      return false;
     }
   }
-  
+
+  onCounterKeyDown(event: any): boolean {
+    if (event.key === '.' || event.key === '-' || event.key === 'e') {
+      return false;
+    }
+    
+    // console.log(event.key);
+    // const element = document.querySelector('input.counter');
+    // const previousLength = element.style.width || 0;
+    // console.log('width is: ' + previousLength);
+    // console.log('nice: ' + element.style.width);
+    // element.style.width = (element.style.width + previousLength + 1) + 'ch';
+
+    return true;
+  }
+
+  onCounterEnter(event: any): boolean {
+    // Keep input number within bounds, and update the number in input element.
+    if (!event || (parseInt(event) < this.minNumberOfRows)) {
+      this.m = this.minNumberOfRows;
+    }
+    else if (parseInt(event) > this.maxNumberOfRows) {
+      this.m = this.maxNumberOfRows;
+    }
+
+    let vectorLength = this.vector1.length;
+    if (this.m === vectorLength) {
+      // Don't do anything.
+    } 
+    else if (this.m > vectorLength) {
+      for (let i = vectorLength; i < this.m; i++) {
+        this.vector1.push({'value': 0});
+        this.vector2.push({'value': 0});
+      }
+    }
+    else {
+      this.vector1.splice(this.m);
+      this.vector2.splice(this.m);
+    }
+
+    return true;
+  }
+
 }
