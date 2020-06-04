@@ -20,7 +20,3 @@ b) Attempt to add a decimal number of rows (e.g. 10.2). There shall be an error 
 
 1. Attempt to input letters as entries in either vector. Neither vector shall allow for strings as entries and there shall be no error message from the UI
 
-
-<style type="text/css">
-    ol { list-style-type: upper-alpha; }
-</style>
