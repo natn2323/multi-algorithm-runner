@@ -1,4 +1,4 @@
-#**Manual Tests for the Dot Product Calculator UI**
+# **Manual Tests for the Dot Product Calculator UI**
 
 ***UI testing***
 
