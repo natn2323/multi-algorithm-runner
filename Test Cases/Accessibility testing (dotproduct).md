@@ -1,4 +1,4 @@
-# ** Manual Accessibility Tests for Dot Product Calculator UI**
+# **Manual Accessibility Tests for Dot Product Calculator UI**
 
 ***Keyboard Testing:***
 
