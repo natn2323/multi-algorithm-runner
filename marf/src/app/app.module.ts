@@ -9,12 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { DotProductResultsComponent } from './dot-product-results/dot-product-results.component';
 import { AngularMaterialModule } from 'src/app/app-material.module';
+import { CalculatorsComponent } from './calculators/calculators.component';
+import { AboutComponent } from './about/about.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DotProductFormComponent,
-    DotProductResultsComponent
+    DotProductResultsComponent,
+    CalculatorsComponent,
+    AboutComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

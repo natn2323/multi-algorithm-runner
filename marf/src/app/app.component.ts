@@ -8,4 +8,5 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class AppComponent { 
   @Input() color: ThemePalette;
+  title = 'Multi-Algorithm Runner';
 }

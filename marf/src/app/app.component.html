@@ -1,11 +1,7 @@
 <mat-toolbar color="primary">
-  <span tabindex="0">Dot Product Calculator</span>
-  <button mat-button type="button">Calculators</button>
-  <button mat-button type="button">About</button>
+  <span tabindex="0">{{title}}</span>
+  <button routerLink="/calculators" routerLinkActive="active" mat-button type="button">Calculators</button>
+  <button routerLink="/about" routerLinkActive="active" mat-button type="button">About</button>
 </mat-toolbar>
-
-<div class="container">
-  <app-dot-product-form></app-dot-product-form>
-</div>
 
 <router-outlet></router-outlet>

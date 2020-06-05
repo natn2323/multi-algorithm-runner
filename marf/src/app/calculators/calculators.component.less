@@ -1,0 +1,39 @@
+.calculators-container {
+    height: 92.5%; // height = 100% - (mat-toolbar height)%
+    background-color: white;
+}
+
+.calculators-sidenav {
+    color: black;
+    padding: 20px;
+    border-right: 3px double darkgray;
+    background-color: white;
+
+    :focus {
+        outline-color: black;
+        outline-style: dashed;
+        outline-width: thick;
+    }
+}
+
+.calculators-sidenav-content {
+    color: black;
+    display: flex;
+    height: 5%;
+        
+    :focus {
+        outline: none;
+        outline-color: black;
+        outline-style: dashed;
+        outline-width: thick;
+    }
+
+    .toggle {
+        position: absolute;
+    }
+
+    .content {
+        margin-top: 2.5%;
+        margin-left: 15%;
+    }
+}

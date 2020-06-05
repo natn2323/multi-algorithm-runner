@@ -1,0 +1,17 @@
+<mat-drawer-container class="calculators-container"autosize>
+  <mat-drawer #drawer class="calculators-sidenav" mode="side" opened="true">
+    <div>
+      <button routerLink="/calculators/dotproduct" type="button" mat-button>Dot Product Calculator</button>
+    </div>
+    <div>
+      <button type="button" mat-button>Second Calculator</button>
+    </div>
+  </mat-drawer>
+
+  <div class="calculators-sidenav-content">
+    <button class="toggle" type="button" mat-button (click)="drawer.toggle()">Toggle Sidenav</button>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>
