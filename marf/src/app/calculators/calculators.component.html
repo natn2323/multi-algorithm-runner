@@ -4,12 +4,14 @@
       <button routerLink="/calculators/dotproduct" type="button" mat-button>Dot Product Calculator</button>
     </div>
     <div>
-      <button type="button" mat-button>Second Calculator</button>
+      <button type="button" mat-button>Prime Numbers Calculator</button>
     </div>
   </mat-drawer>
 
   <div class="calculators-sidenav-content">
-    <button class="toggle" type="button" mat-button (click)="drawer.toggle()">Toggle Sidenav</button>
+    <button class="sidenav-toggle" type="button" mat-button (click)="drawer.toggle()">
+      <i class="material-icons-round">menu</i>
+    </button>
     <div class="content">
       <router-outlet></router-outlet>
     </div>

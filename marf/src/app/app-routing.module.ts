@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CalculatorsComponent } from './calculators/calculators.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DotProductFormComponent } from './dot-product-form/dot-product-form.component';
+import { DotProductFormComponent } from './calculators/dot-product-calculator/dot-product-form/dot-product-form.component';
 
 const routes: Routes = [
   { 

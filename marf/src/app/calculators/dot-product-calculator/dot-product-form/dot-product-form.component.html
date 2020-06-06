@@ -15,8 +15,9 @@
 
     <span class="io-group">
         <span class="interactive">
-            <div>Number of rows:
-                <input #counter class="counter" type="number" min="1" (keydown)="onCounterKeyDown($event)" (keyup.enter)="onCounterEnter(counter.value)" (blur)="onCounterEnter(counter.value)" [(ngModel)]="m">
+            <div>
+                <span id="counterText">Number of rows: </span>
+                <input #counter aria-labelledby="counterText" class="counter" type="number" min="1" (keydown)="onCounterKeyDown($event)" (keyup.enter)="onCounterEnter(counter.value)" (blur)="onCounterEnter(counter.value)" [(ngModel)]="m">
             </div>
             
             <div>
@@ -28,7 +29,7 @@
         </span>
 
         <div>
-            <app-dot-product-results *ngIf="shouldShowResult()" [result]="dotProductResult" [errorMessage]="errorMessageFromAPI"></app-dot-product-results>
+            <app-dot-product-results *ngIf="shouldShowResult()" [result]="dotProductResult" [errorMessage]="errorMessageFromAPI" role="alert"></app-dot-product-results>
         </div>
     </span>
 </div>
