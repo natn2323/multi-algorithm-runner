@@ -97,6 +97,7 @@ export class DotProductFormComponent implements OnInit {
       'Content-Type': 'application/json'
     });
 
+    // TODO: (*)Have a spinner icon or progress bar which displays while request is in progress
     this.http.post(this.configUrl, data, { headers: requestHeaders, observe: 'response', responseType: 'json' })
       .pipe(catchError(this.handleError))
       .subscribe(
