@@ -28,8 +28,6 @@
             </div>
         </span>
 
-        <div>
-            <app-dot-product-results *ngIf="shouldShowResult()" [result]="dotProductResult" [errorMessage]="errorMessageFromAPI" role="alert"></app-dot-product-results>
-        </div>
+        <app-dot-product-results *ngIf="shouldShowResult()" [result]="dotProductResult" [errorMessage]="errorMessageFromAPI"></app-dot-product-results>
     </span>
 </div>

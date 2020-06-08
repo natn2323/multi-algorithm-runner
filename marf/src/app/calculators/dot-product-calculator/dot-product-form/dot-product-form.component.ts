@@ -81,7 +81,7 @@ export class DotProductFormComponent implements OnInit {
     }
     // return an observable with a user-facing error message
     return throwError(errorMessage);
-  };
+  }
 
   onSubmit(): boolean {
     // TODO: Make sure that the submission cannot occur while the vectorLengthOnChange function is being run
@@ -129,13 +129,6 @@ export class DotProductFormComponent implements OnInit {
       return false;
     }
     
-    // console.log(event.key);
-    // const element = document.querySelector('input.counter');
-    // const previousLength = element.style.width || 0;
-    // console.log('width is: ' + previousLength);
-    // console.log('nice: ' + element.style.width);
-    // element.style.width = (element.style.width + previousLength + 1) + 'ch';
-
     return true;
   }
 
