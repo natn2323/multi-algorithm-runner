@@ -1,5 +1,5 @@
 
- # **Manual Tests for the  server-script interface**
+ # **Manual Tests for the server-script interface**
 
 **Test Case 1:**
 1. Send a POST request with [1,2,3] and [2,3,4]. The value, 20, shall be contained in the response.
