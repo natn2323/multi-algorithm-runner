@@ -1,4 +1,4 @@
-<div class="result-container" *ngIf="result || errorMessage">
+<div class="result-container" *ngIf="result || errorMessage" tabindex="0" role="alert">
     <div class="result title">Results</div>
     <div class="result" *ngIf="result">The dot product of vector 1 and vector 2 is: {{result}}</div>
     <div class="result" *ngIf="errorMessage">{{errorMessage}}</div>
