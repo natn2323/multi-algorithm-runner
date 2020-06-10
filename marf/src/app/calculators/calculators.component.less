@@ -9,6 +9,10 @@
     border-right: 3px double darkgray;
     background-color: white;
 
+    @media (max-width: 640px) {
+        display: none;
+    }
+
     :focus {
         outline-color: black;
         outline-style: dashed;
@@ -23,8 +27,7 @@
 .calculators-sidenav-content {
     color: black;
     display: flex;
-    height: 5%;
-        
+
     :focus {
         outline-color: black;
         outline-style: dashed;
@@ -35,11 +38,18 @@
         color: black;
         position: absolute;
         margin: 4px 4px 4px 4px;
+
+        @media (max-width: 640px) {
+            display: none;
+        }
     }
 
     .content {
+        width: 100%;
         margin-top: 2.5%;
-        margin-left: 15%;
 
+        @media (max-width: 640px) {
+            margin-left: 2.5%;
+        }
     }
 }

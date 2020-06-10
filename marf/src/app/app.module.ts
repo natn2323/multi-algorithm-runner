@@ -12,6 +12,7 @@ import { AngularMaterialModule } from 'src/app/app-material.module';
 import { CalculatorsComponent } from './calculators/calculators.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PrimeNumberCheckerComponent } from './calculators/prime-number-checker/prime-number-checker.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     DotProductResultsComponent,
     CalculatorsComponent,
     AboutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PrimeNumberCheckerComponent
   ],
   imports: [
     BrowserModule,
