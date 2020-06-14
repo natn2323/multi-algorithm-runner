@@ -129,7 +129,17 @@ dmypy.json
 .pyre/
 
 # Ignore node modules
-*/node_modules
+**/node_modules
 
 # Ignore MAP files from TS compiler
 *.map
+
+# Ignore any stored Lighthouse runs
+LighthouseRuns/
+
+# Ignore generated Firebase cache and private project
+.firebase/
+.firebaserc
+
+# Ignore .vscode project settings
+.vscode/

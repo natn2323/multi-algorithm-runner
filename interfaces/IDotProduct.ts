@@ -1,4 +1,4 @@
 export interface IDotProduct {
-    data?: number,
-    message?: string
+    data?: number;
+    message?: string;
 }
