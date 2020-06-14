@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-calculators',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculatorsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public meta: Meta, public title: Title) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

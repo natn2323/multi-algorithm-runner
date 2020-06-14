@@ -44,3 +44,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Generated Firestore logs
+ui-debug.log
+
+# Generated folder from "ng build --prod"
+public/

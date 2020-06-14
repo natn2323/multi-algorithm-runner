@@ -13,7 +13,7 @@ export class DotProductFormComponent implements OnInit {
   See https://angular.io/guide/form-validation#built-in-validator-functions if you want to see how to add custom validators.
   */
   // TODO: Make this hardcoded URL configurable, using environments/environment.<area>.ts files
-  configUrl: string = 'http://localhost:4200/api/dotproduct';
+  configUrl: string = '/api/dotproduct';
   minNumberOfRows: number = 1;
   maxNumberOfRows: number = 25;
   m: number = 1;
@@ -102,13 +102,13 @@ export class DotProductFormComponent implements OnInit {
       .pipe(catchError(this.handleError))
       .subscribe(
         res => {
-          if (res.body.data !== null) {
-            this.dotProductResult = res.body.data.toString();
+          if (res.body.data && res.body.data.value !== null) {
+            this.dotProductResult = res.body.data.value.toString();
             this.errorMessageFromAPI = '';
           }
           else {
             this.dotProductResult = '';
-            this.errorMessageFromAPI = res.body.message;
+            this.errorMessageFromAPI = res.body.data.message;
           }
         },
         err => {
