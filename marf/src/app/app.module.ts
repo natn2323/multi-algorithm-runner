@@ -4,15 +4,16 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DotProductFormComponent } from './calculators/dot-product-calculator/dot-product-form/dot-product-form.component';
+import { DotProductFormComponent } from './calculators/dot-product/dot-product-form/dot-product-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
-import { DotProductResultsComponent } from './calculators/dot-product-calculator/dot-product-results/dot-product-results.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DotProductResultsComponent } from './calculators/dot-product/dot-product-results/dot-product-results.component';
 import { AngularMaterialModule } from 'src/app/app-material.module';
 import { CalculatorsComponent } from './calculators/calculators.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PrimeNumberCheckerComponent } from './calculators/prime-number-checker/prime-number-checker.component';
+import { FindPrimesComponent } from './calculators/find-primes/find-primes.component';
+import { AriaErrorIconComponent } from './shared/aria-error-icon/aria-error-icon.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PrimeNumberCheckerComponent } from './calculators/prime-number-checker/
     CalculatorsComponent,
     AboutComponent,
     PageNotFoundComponent,
-    PrimeNumberCheckerComponent
+    FindPrimesComponent,
+    AriaErrorIconComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { PrimeNumberCheckerComponent } from './calculators/prime-number-checker/
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule
   ],

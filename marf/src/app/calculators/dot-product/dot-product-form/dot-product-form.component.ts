@@ -88,6 +88,12 @@ export class DotProductFormComponent implements OnInit {
     this.vector1NumberList = this.vector1.map((element) => element.value);
     this.vector2NumberList = this.vector2.map((element) => element.value);
 
+
+    console.log(Array.isArray(this.vector1NumberList));
+
+    console.log(typeof this.vector1NumberList);
+    console.log(this.vector1NumberList);
+
     const data = {
       list1: this.vector1NumberList,
       list2: this.vector2NumberList

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrimeNumberCheckerComponent } from './prime-number-checker.component';
+import { FindPrimesComponent } from './find-primes.component';
 
-describe('PrimeNumberCheckerComponent', () => {
-  let component: PrimeNumberCheckerComponent;
-  let fixture: ComponentFixture<PrimeNumberCheckerComponent>;
+describe('FindPrimesComponent', () => {
+  let component: FindPrimesComponent;
+  let fixture: ComponentFixture<FindPrimesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrimeNumberCheckerComponent ]
+      declarations: [ FindPrimesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrimeNumberCheckerComponent);
+    fixture = TestBed.createComponent(FindPrimesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

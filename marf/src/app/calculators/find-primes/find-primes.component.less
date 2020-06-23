@@ -1,0 +1,173 @@
+.prime-finder-container {
+    margin-left: 12.5%;
+    margin-right: 15%;
+    height: 100%;
+
+    .mat-form-field {
+
+        mat-label {
+            color: black;
+        }
+
+        .mat-hint {
+            color: black;
+        }
+    }
+
+    .mat-button {
+        margin-top: 10px;
+        background-color: orange;
+        border-radius: 20px;
+    }
+
+    // .mat-button:disabled {
+    //     pointer-events: none;
+    //     background-color: black;
+    //     color: white;
+    // }
+
+    .result-container {
+        mat-expansion-panel {
+            margin-top: 2.5%;
+            color: black;
+        }
+    }
+
+    .expander {
+        // background-color: mediumseagreen;
+        background-color: #59aafb;
+        margin-top: 5%;
+
+        transition-delay: 1s;
+        transition-duration: 0.5s;
+
+        // Just tall/wide enough to fit results button
+        width: 70px;
+        height: 40px;
+        overflow: hidden;
+        border-radius: 20px;
+        // border-color: darkblue;
+        border-color: black;
+        border-style: solid;
+        border-width: 2px;
+
+        .expander-chip {
+            font-weight: 500;
+            display: inline-block;
+            vertical-align: top;
+            position: absolute;
+            background-color: #5085a8;
+            border-radius: 20px;
+            height: 20px;
+            width: 7ch;
+
+            // /* top | right | bottom | left */
+            padding: 10px 2.5px 10px 12.5px;
+
+            // box-shadow: 
+            //     inset 0 -3em 3em rgba(0,0,0,0.1), 
+            //     0 0  0 2px rgb(255,255,255),
+            //     0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+            border-width: 2px;
+            // border-color: red;
+            border-style: solid;
+
+            margin-top: -2px;
+            margin-left: -2px;
+
+            z-index: 1;
+        }
+
+        .hider {
+            display: inline-block;
+            position: absolute;
+            background-color: #5085a8;
+            margin-left: calc(50px - 2px);
+            margin-top: -2px;
+            height: 40px;
+            width: 5px;
+            border-color: black;
+            border-top-style: solid;
+            border-bottom-style: solid;
+            border-top-width: 2px;
+            border-bottom-width: 2px;
+
+            transition-delay: 1s;
+            transition-duration: 0.5s;
+
+            z-index: 0;
+        }
+
+        .hider.activated {
+            transform: translateX(5px);
+        }
+
+        .expander-slider {
+            vertical-align: top;
+            position: relative;
+            background-color: transparent;            
+
+            width: 20px;
+            height: 10px;
+            background-color: #5085a8;
+            border-top-left-radius: 110px;
+            border-top-right-radius: 110px;
+            border: 2px solid black;
+            border-bottom: 0;
+            transform: rotate(90deg);
+            margin-left: calc(30px - 2px);
+            margin-top: -2px;
+
+            transition-delay: 1s;
+            transition-duration: 0.5s;
+
+            // /* top | right | bottom | left */
+            padding: 22px 0px 10px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            
+            app-aria-error-icon {
+                transform: rotate(-90deg);
+                height: 24px;
+                margin-right: 8px;
+                margin-bottom: 24px;
+            }
+        }
+
+        // .expander-slider.activated {
+        //     transform: translateX(30px) rotate(90deg);
+
+        //     app-aria-error-icon {
+        //         margin-bottom: 24px;
+        //     }
+        // }
+       
+        .expander-content {
+            margin: 5%;
+
+            // background-color: lightskyblue;
+        }
+    }
+
+    .expander.inProgress {
+        width: 100px;
+    }
+
+    .expander.activated {
+        // height: 300px;
+        // width: 400px;
+        height: 50%;
+        width: 50%;
+        margin-right: 2.5%;
+
+        @media (max-width: 500px) {
+            // margin-right: 90px;
+            // width: 33%;
+            width: 97.5%;
+            height: 70%;
+        }
+    }
+}
