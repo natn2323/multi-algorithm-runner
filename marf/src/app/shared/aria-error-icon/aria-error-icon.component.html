@@ -1,3 +1,2 @@
 <!-- The ARIA error icon displays a persistent tooltip that can be exited out of by clicking elsewhere on the page. -->
-<!-- <mat-icon [@displayIcon]="shouldAnimate ? 'activated' : ''" *ngIf="isShowing" [matTooltip]="tooltipMessage" [matTooltipPosition]="tooltipPosition" [aria-label]="ariaLabel" #tooltip="matTooltip" (mouseleave)="$event.stopImmediatePropagation()">{{iconName}}</mat-icon> -->
-<mat-icon [@displayIcon]="shouldAnimate ? 'activated' : ''" [matTooltip]="tooltipMessage" [matTooltipPosition]="tooltipPosition" [aria-label]="ariaLabel" #tooltip="matTooltip" (mouseleave)="$event.stopImmediatePropagation()">{{iconName}}</mat-icon>
+<mat-icon [ngClass]="shouldFlipHorizontally ? 'horizontally-flipped' : ''" [@displayIcon]="shouldAnimate ? 'activated' : ''" [matTooltip]="tooltipMessage" [matTooltipPosition]="tooltipPosition" [aria-label]="ariaLabel" #tooltip="matTooltip" (mouseleave)="$event.stopImmediatePropagation()">{{iconName}}</mat-icon>

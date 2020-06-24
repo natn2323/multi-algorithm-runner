@@ -20,12 +20,12 @@
                 <span *ngSwitchCase="!isSubmitting">Check</span>
                 <mat-spinner *ngSwitchCase="isSubmitting" [diameter]="25"></mat-spinner>
             </button> -->
-            <button mat-button [disabled]="isSubmitting" (click)="onSubmit()">Check</button>
+            <button mat-button [disabled]="isSubmitting" (click)="onSubmit()" tabindex="0">Check</button>
         </div>
     </form>
 
     <!-- <div class="expander" [ngClass]="{'activated': !inputString.errors}"> -->
-    <div class="expander" [ngClass]="{'activated': haveResult, 'inProgress' : isSubmitting}">
+    <div class="expander" [ngClass]="{'activated': haveResult, 'inProgress' : isSubmitting}" tabindex="0">
         <div class="expander-chip">Results</div>
         
         <!-- <span class="hider" [ngClass]="{'activated': inputString.errors}"></span> -->
@@ -38,7 +38,7 @@
             <app-aria-error-icon shouldAnimate="true" [isShowing]="isSubmitting" tooltipMessage="Calculation in progress." tooltipPosition="right" ariaLabel="" iconName="cached" matSuffix></app-aria-error-icon> -->
 
             <app-aria-error-icon [shouldAnimate]="inputString.errors" tooltipMessage="No calculation is being performed." tooltipPosition="right" ariaLabel="" iconName="error_outline" matSuffix></app-aria-error-icon>
-            <app-aria-error-icon [shouldAnimate]="isSubmitting" tooltipMessage="Calculation in progress." tooltipPosition="right" ariaLabel="" iconName="cached" matSuffix></app-aria-error-icon>
+            <app-aria-error-icon class="spinner" [shouldFlipHorizontally]="true" [shouldRotate]="true" [shouldAnimate]="isSubmitting" tooltipMessage="Calculation in progress." tooltipPosition="right" ariaLabel="" iconName="cached" matSuffix></app-aria-error-icon>
         </span>
 
         <div class="expander-content" [ngClass]="{'activated': !inputString.errors}">

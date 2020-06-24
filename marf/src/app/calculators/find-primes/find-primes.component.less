@@ -4,13 +4,18 @@
     height: 100%;
 
     .mat-form-field {
-
         mat-label {
             color: black;
         }
 
         .mat-hint {
             color: black;
+        }
+
+        :focus {
+            outline-color: black;
+            outline-style: dashed;
+            outline-width: thick;
         }
     }
 
@@ -26,6 +31,12 @@
     //     color: white;
     // }
 
+    .mat-button:focus {
+        outline-color: black;
+        outline-style: dashed;
+        outline-width: thick;
+    }
+
     .result-container {
         mat-expansion-panel {
             margin-top: 2.5%;
@@ -34,19 +45,23 @@
     }
 
     .expander {
-        // background-color: mediumseagreen;
         background-color: #59aafb;
         margin-top: 5%;
 
-        transition-delay: 1s;
-        transition-duration: 0.5s;
+        // :focus {
+        //     outline-color: black;
+        //     outline-style: dashed;
+        //     outline-width: medium;
+        // }
+
+        // transition: property name | duration | timing function | delay
+        transition: width 0.5s linear 1s, height 0.5s linear 1s;
 
         // Just tall/wide enough to fit results button
         width: 70px;
         height: 40px;
         overflow: hidden;
         border-radius: 20px;
-        // border-color: darkblue;
         border-color: black;
         border-style: solid;
         border-width: 2px;
@@ -61,7 +76,7 @@
             height: 20px;
             width: 7ch;
 
-            // /* top | right | bottom | left */
+            /* top | right | bottom | left */
             padding: 10px 2.5px 10px 12.5px;
 
             // box-shadow: 
@@ -70,7 +85,6 @@
             //     0.3em 0.3em 1em rgba(0,0,0,0.3);
 
             border-width: 2px;
-            // border-color: red;
             border-style: solid;
 
             margin-top: -2px;
@@ -135,20 +149,26 @@
                 margin-right: 8px;
                 margin-bottom: 24px;
             }
+
+            .spinner {
+                animation-name: spin;
+                animation-duration: 2000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
         }
 
-        // .expander-slider.activated {
-        //     transform: translateX(30px) rotate(90deg);
-
-        //     app-aria-error-icon {
-        //         margin-bottom: 24px;
-        //     }
-        // }
-       
         .expander-content {
             margin: 5%;
-
-            // background-color: lightskyblue;
         }
     }
 
@@ -157,15 +177,11 @@
     }
 
     .expander.activated {
-        // height: 300px;
-        // width: 400px;
         height: 50%;
         width: 50%;
         margin-right: 2.5%;
 
         @media (max-width: 500px) {
-            // margin-right: 90px;
-            // width: 33%;
             width: 97.5%;
             height: 70%;
         }

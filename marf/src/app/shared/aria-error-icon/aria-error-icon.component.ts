@@ -7,11 +7,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('displayIcon', [
       state('activated', style({
-        // transform: 'translateX(30px) rotate(90deg)'
-        // display: 'none'
+        
       })),
       state('*', style({
-        // display: 'hidden'
+
       })),
       transition('activated => *', [
         animate('0.5s')
@@ -33,6 +32,7 @@ export class AriaErrorIconComponent implements OnInit, OnChanges {
   @Input() isShowing: boolean;
   @Input() iconName: string;
   @Input() shouldAnimate: boolean;
+  @Input() shouldFlipHorizontally: boolean;
 
   constructor() { }
 
