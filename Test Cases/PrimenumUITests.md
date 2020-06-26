@@ -8,5 +8,3 @@
 
 **Test Case 3**
 3. Attempt to pass in a mix of negative integers and positive values. All of the negative integers will be identified as non-prime with an error message: "At least one negative number was inputted, but only the non-negative numbers will be considered".
-
-
