@@ -1,2 +1,3 @@
 <!-- The ARIA error icon displays a persistent tooltip that can be exited out of by clicking elsewhere on the page. -->
-<mat-icon [ngClass]="shouldFlipHorizontally ? 'horizontally-flipped' : ''" [@displayIcon]="shouldAnimate ? 'activated' : ''" [matTooltip]="tooltipMessage" [matTooltipPosition]="tooltipPosition" [aria-label]="ariaLabel" #tooltip="matTooltip" (mouseleave)="$event.stopImmediatePropagation()">{{iconName}}</mat-icon>
+<!-- TODO: Make the tooltip text accessible, i.e. announce itself when appearing, and screen readable when hovered. -->
+<mat-icon aria-describedby="ariaTooltipMessage" [ngClass]="shouldFlipHorizontally ? 'horizontally-flipped' : ''" [@displayIcon]="shouldAnimate ? 'activated' : ''" [matTooltip]="tooltipMessage" [matTooltipPosition]="tooltipPosition" [aria-label]="ariaLabel" role="tooltip" #tooltip="matTooltip" (mouseleave)="$event.stopImmediatePropagation()">{{iconName}}</mat-icon>

@@ -1,21 +1,41 @@
 .prime-finder-container {
+    
     margin-left: 12.5%;
     margin-right: 15%;
     height: 100%;
 
-    .mat-form-field {
-        mat-label {
-            color: black;
+    .title {
+        font-family: dotty;
+        font-size: 32px;
+    }
+
+    .input-group {
+        padding-bottom: 7.5%; // Make space for the input hint
+
+        span {
+            margin-right: 5px;
         }
 
-        .mat-hint {
-            color: black;
+        .input-hint {
+            font-size: x-small;
+            position: absolute;
         }
 
-        :focus {
-            outline-color: black;
-            outline-style: dashed;
-            outline-width: thick;
+        input {
+            box-shadow: 
+                inset 0 -3em 3em rgba(0,0,0,0.1), 
+                // 0 0  0 2px rgb(255,255,255),
+                0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+            :focus {
+                outline-color: black;
+                outline-style: dashed;
+                outline-width: thick;
+            }
+        }
+
+        app-aria-error-icon {
+            vertical-align: middle;
         }
     }
 
@@ -37,22 +57,9 @@
         outline-width: thick;
     }
 
-    .result-container {
-        mat-expansion-panel {
-            margin-top: 2.5%;
-            color: black;
-        }
-    }
-
     .expander {
         background-color: #59aafb;
         margin-top: 5%;
-
-        // :focus {
-        //     outline-color: black;
-        //     outline-style: dashed;
-        //     outline-width: medium;
-        // }
 
         // transition: property name | duration | timing function | delay
         transition: width 0.5s linear 1s, height 0.5s linear 1s;

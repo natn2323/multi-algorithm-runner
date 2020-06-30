@@ -1,55 +1,32 @@
 <div class="prime-finder-container">
-    <form class="input-group" [formGroup]="findPrimesForm">
-        <mat-form-field color="accent" appearance="outline">
-            <mat-label>Are these prime?</mat-label>
-            <input #input matInput type="text" formControlName="inputString" [maxlength]="maxCharacters">
-            <!-- <app-aria-error-icon [isShowing]="inputString.errors?.pattern" tooltipMessage="Input must be an integer." tooltipPosition="right" ariaLabel="" matSuffix></app-aria-error-icon>
-            <app-aria-error-icon [isShowing]="inputString.errors?.required && inputString.pristine" tooltipMessage="Please input an integer." tooltipPosition="right" ariaLabel="" iconName="error_outline" matSuffix></app-aria-error-icon>
-            <app-aria-error-icon [isShowing]="inputString.errors?.required && inputString.dirty" tooltipMessage="Input cannot be blank." tooltipPosition="right" ariaLabel="" iconName="error_outline" matSuffix></app-aria-error-icon> -->
+    <h1 class="title">{{title}}</h1>
 
-            <app-aria-error-icon *ngIf="inputString.errors?.pattern" tooltipMessage="Input must be an integer." tooltipPosition="right" ariaLabel="" iconName="error_outline" matSuffix></app-aria-error-icon>
-            <app-aria-error-icon *ngIf="inputString.errors?.required && inputString.pristine" tooltipMessage="Please input an integer." tooltipPosition="right" ariaLabel="" iconName="error_outline" matSuffix></app-aria-error-icon>
-            <app-aria-error-icon *ngIf="inputString.errors?.required && inputString.dirty" tooltipMessage="Input cannot be blank." tooltipPosition="right" ariaLabel="" iconName="error_outline" matSuffix></app-aria-error-icon>
+    <form>
+        <div class="input-group">
+            <span id="inputText">Are the following prime?</span>
+            <input aria-labelledby="inputText" name="input" [(ngModel)]="input">
 
-            <mat-hint align="start">Max characters: {{maxCharacters}}</mat-hint>
-            <mat-hint align="end">{{input.value?.length}}/{{maxCharacters}}</mat-hint>
-        </mat-form-field>
-        <div>
-            <!-- Show spinner instead of "Check" when submission in progress -->
-            <!-- <button [ngSwitch]="true" mat-button (click)="onSubmit()">
-                <span *ngSwitchCase="!isSubmitting">Check</span>
-                <mat-spinner *ngSwitchCase="isSubmitting" [diameter]="25"></mat-spinner>
-            </button> -->
-            <button mat-button [disabled]="isSubmitting" (click)="onSubmit()" tabindex="0">Check</button>
+            <app-aria-error-icon [ngStyle]="{'display': (!hasValidationError ? 'none' : '')}" [tooltipMessage]="validationErrorMessage" tooltipPosition="above" iconName="error_outline" matSuffix tabindex="0"></app-aria-error-icon>
+
+            <div class="input-hint" tabindex="0">Example: 9, 31, 99</div>
         </div>
+
+        <button mat-button (click)="onSubmit()">Submit</button>
     </form>
 
-    <!-- <div class="expander" [ngClass]="{'activated': !inputString.errors}"> -->
-    <div class="expander" [ngClass]="{'activated': haveResult, 'inProgress' : isSubmitting}" tabindex="0">
+    <div class="expander" [ngClass]="{'activated': hasResult, 'inProgress' : isSubmitting}" tabindex="0">
         <div class="expander-chip">Results</div>
         
-        <!-- <span class="hider" [ngClass]="{'activated': inputString.errors}"></span> -->
         <span class="hider" [ngClass]="{'activated': isSubmitting}"></span>
 
-        <!-- <span class="expander-slider" [ngClass]="{'activated': inputString.errors || isSubmitting}"> -->
-        <!-- <span class="expander-slider" [@expandCollapse]="(inputString.errors || isSubmitting) ? 'activated' : ''"> -->
         <span class="expander-slider" [@expandCollapse]="isSubmitting ? 'activated' : ''">
-            <!-- <app-aria-error-icon shouldAnimate="true" [isShowing]="inputString.errors" tooltipMessage="No calculation is being performed." tooltipPosition="right" ariaLabel="" iconName="error_outline" matSuffix></app-aria-error-icon>
-            <app-aria-error-icon shouldAnimate="true" [isShowing]="isSubmitting" tooltipMessage="Calculation in progress." tooltipPosition="right" ariaLabel="" iconName="cached" matSuffix></app-aria-error-icon> -->
-
-            <app-aria-error-icon [shouldAnimate]="inputString.errors" tooltipMessage="No calculation is being performed." tooltipPosition="right" ariaLabel="" iconName="error_outline" matSuffix></app-aria-error-icon>
-            <app-aria-error-icon class="spinner" [shouldFlipHorizontally]="true" [shouldRotate]="true" [shouldAnimate]="isSubmitting" tooltipMessage="Calculation in progress." tooltipPosition="right" ariaLabel="" iconName="cached" matSuffix></app-aria-error-icon>
+            <app-aria-error-icon class="spinner" [shouldFlipHorizontally]="true" [shouldRotate]="true" [shouldAnimate]="isSubmitting" tooltipMessage="Calculation in progress." tooltipPosition="right" iconName="cached" matSuffix></app-aria-error-icon>
         </span>
 
-        <div class="expander-content" [ngClass]="{'activated': !inputString.errors}">
-            <span class="expander-placeholder" [ngClass]="{'activated': !inputString.errors}">
-                <!-- <div *ngIf="primes || (nonPrimes && respMessage) || nonPrimes">
-                    <div>Primes are {{primes | json}}</div>
-                    <div>Non-primes are {{nonPrimes | json}}</div>
-                    <div *ngIf="respMessage">{{respMessage}}</div>
-                </div> -->
-                <div *ngIf="primes">Primes are {{primes}}</div>
-                <div *ngIf="nonPrimes">Non-primes are {{nonPrimes}}</div>
+        <div class="expander-content" [ngClass]="{'activated': hasResult}" role="alert">
+            <span class="expander-placeholder" [ngClass]="{'activated': hasResult}">
+                <div *ngIf="primes">Prime numbers include: {{primes}}.</div>
+                <div *ngIf="nonPrimes">Non-prime numbers include: {{nonPrimes}}.</div>
                 <div *ngIf="nonPrimes && respMessage">Note: {{respMessage}}</div>
                 <div *ngIf="respHasError && respMessage">An error has occurred.</div>
             </span>

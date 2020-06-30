@@ -36,7 +36,7 @@
             display: flex;
             flex-direction: column;
             text-align: center;
-            background-color: rgb(80, 133, 168);
+            background-color: #8a78be;
             margin-right: 5%;
             margin-left: 5%;
             border-radius: 20px;
@@ -47,6 +47,16 @@
                 outline-style: dashed;
                 outline-width: medium;
             }
+
+            // box-shadow: 
+            //     inset 0 -3em 3em rgba(0,0,0,0.1), 
+            //     0 0  0 2px rgb(255,255,255),
+            //     0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+            box-shadow: 
+                inset 0 -3em 3em rgba(0,0,0,0.1), 
+                // 0 0  0 2px rgb(255,255,255),
+                0.3em 0.3em 1em rgba(0,0,0,0.3);
         }
 
         input {
@@ -57,6 +67,11 @@
             padding-left: 0px;
             width: 50%;
             text-align: center;
+
+            // box-shadow: 
+            //     inset 0 -3em 3em rgba(0,0,0,0.1), 
+            //     // 0 0  0 2px rgb(255,255,255),
+            //     0.3em 0.3em 1em rgba(0,0,0,0.3);
         }
 
         /* Chrome, Safari, Edge, Opera */
@@ -94,6 +109,11 @@
         .counter {
             font-size: 100%;
             width: 10%;
+
+            box-shadow: 
+                inset 0 -3em 3em rgba(0,0,0,0.1), 
+                // 0 0  0 2px rgb(255,255,255),
+                0.3em 0.3em 1em rgba(0,0,0,0.3);
         }
 
         button {
@@ -103,8 +123,8 @@
 
         .mat-button:disabled {
             pointer-events: none;
-            background-color: black;
-            color: white;
+            background-color: #fa4b4b;
+            color: black;
         }
 
         .mat-button:hover {
