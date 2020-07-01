@@ -1,4 +1,4 @@
-# **Manual Tests for the prime number checker algorithm
+# **Manual Tests for the prime number checker algorithm**
 
 **Test Case 1**
 1. Attempt to pass in a set of decimal values (e.g. 1.23, 3.45, 2.34). The real time input validation process will indicate that one of the numbers is not an integer and thus   not allow for the calculation to occur
