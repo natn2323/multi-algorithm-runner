@@ -10,17 +10,20 @@ def is_prime_number(num):
     Returns:
         A boolean: True if input number is prime, and False otherwise
     """
-    if num < 2:
-        return False
-    elif num == 2:
-        return True
-    elif num > 2 and num % 2 == 0:
-        return False
+    if type(num) == int:
+        if num < 2:
+            return False
+        elif num == 2:
+            return True
+        elif num > 2 and num % 2 == 0:
+            return False
+        else:
+            for i in range(3, int(num**0.5)+1, 2):
+                if num % i == 0:
+                    return False
+            return True
     else:
-        for i in range(3, int(num**0.5)+1, 2):
-            if num % i == 0:
-                return False
-        return True
+        return False
                 
 def separate_prime_and_non_primes(list1):
     """Checks given list for prime numbers.
@@ -77,16 +80,13 @@ def find_primes(request):
         error_message = 'Invalid user input: the list was empty.'
         has_error = True
 
-    if not has_error:
-        try: 
-            list1 = [int(x) for x in list1]
-        except ValueError:
-            error_message = 'Invalid user input: an entry was not a number.'
-            has_error = True
-    
+    if not has_error and any(type(element) == float for element in list1):
+        # Allow for decimal numbers in the list, but don't consider them
+        error_message = 'At least one decimal number was inputted, and all decimal numbers are non-prime.'
+       
     if not has_error and any(element < 0 for element in list1):
         # Allow for negative numbers in the list, but don't consider them
-        error_message = 'At least one negative number was inputted, but only the non-negative numbers will be considered.'
+        error_message = 'At least one negative number was inputted, and all negative numbers are non-prime.'
         
     if not has_error:
         try: 
