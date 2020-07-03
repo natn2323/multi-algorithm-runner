@@ -51,14 +51,19 @@ export class FindPrimesComponent implements OnInit {
       this.validationErrorMessage = 'Input is empty. Please input a number.';
       return null;
     }
+    else if (input.includes('.') || input.includes('-')) {
+      this.hasValidationError = true;
+      this.validationErrorMessage = 'Input is invalid. Only non-negative integers are accepted.';
+      return null;
+    }
     else {
-      const inputList: number[] = input.split(',').map(element => parseInt(element));
+      const inputList: number[] = input.split(',').map(element => parseFloat(element)); 
       let i: number;
       
       for (i = 0; i < inputList.length; i++) {
         if (Number.isNaN(inputList[i])) {
           this.hasValidationError = true;
-          this.validationErrorMessage = 'Input is invalid. Only integers are accepted.';
+          this.validationErrorMessage = 'Input is invalid. Only non-negative integers are accepted.';
           return null;
         }
         else if (inputList[i] > this.maxNumberValue) {
@@ -124,8 +129,6 @@ export class FindPrimesComponent implements OnInit {
                 // Parse the primes and non-primes lists
                 this.primes = res.body.data['primes'].length > 0 ? res.body.data['primes'] : null;
                 this.nonPrimes = res.body.data['non_primes'].length > 0 ? res.body.data['non_primes'] : null;
-  
-                this.respMessage = res.body.data['message'];
             }
             else if (res.body.data && res.body.data['has_error'] && res.body.data['message']) {
               this.respHasError = res.body.data['has_error'];

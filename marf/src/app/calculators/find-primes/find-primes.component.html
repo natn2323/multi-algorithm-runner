@@ -27,7 +27,6 @@
             <span class="expander-placeholder" [ngClass]="{'activated': hasResult}">
                 <div *ngIf="primes">Prime numbers include: {{primes}}.</div>
                 <div *ngIf="nonPrimes">Non-prime numbers include: {{nonPrimes}}.</div>
-                <div *ngIf="nonPrimes && respMessage">Note: {{respMessage}}</div>
                 <div *ngIf="respHasError && respMessage">An error has occurred.</div>
             </span>
         </div>

@@ -1,4 +1,4 @@
-# **Manual Tests for the updated prime number checker UI 
+# **Manual Tests for the updated prime number checker UI**
 
 **Test Case 1**
 1. Attempt to pass in only negative integers as inputs. All the outputs shall be identified as non-prime and shall include the error message: At least one negative number was inputted, but only the non-negative numbers will be considered.
