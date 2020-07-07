@@ -1,4 +1,4 @@
-import { IDotProduct } from '../../interfaces/IDotProduct';
+import { IDotProduct } from '../../../interfaces/IDotProduct';
 
 import express from 'express';
 import firebase from 'firebase';

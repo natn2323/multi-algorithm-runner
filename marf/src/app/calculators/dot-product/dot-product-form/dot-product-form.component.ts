@@ -2,6 +2,7 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, ObservableInput } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dot-product-form',
@@ -18,6 +19,10 @@ export class DotProductFormComponent implements OnInit {
   maxNumberOfRows: number = 25;
   m: number = 1;
 
+  pageTitle: string = 'Dot Product Calculator';
+  metaTitle: string = 'Dot Product Calculator';
+  metaDescription: string = `Accessible calculator used for computing dot products. This calculator allows vectors of maximum length ${this.maxNumberOfRows}.`;
+
   vector1 = [{'value': 0}];
   vector2 = [{'value': 0}];
   vector1NumberList: number[] = null;
@@ -25,9 +30,14 @@ export class DotProductFormComponent implements OnInit {
   dotProductResult: string = '';
   errorMessageFromAPI: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private titleService: Title, private metaService: Meta) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.titleService.setTitle(this.metaTitle);
+    this.metaService.addTags([
+      { name: 'description', content: this.metaDescription }
+    ]);
+  }
 
   shouldShowResult(): boolean {
     const haveResult = this.dotProductResult !== '' ? true : false;

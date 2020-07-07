@@ -7,9 +7,17 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./calculators.component.less']
 })
 export class CalculatorsComponent implements OnInit {
+  // Note: this title and description won't be seen if the URL redirects to the 'first' calculator
+  metaTitle: string = 'Calculators of the Multi-Algorithm Runner'; 
+  metaDescription: string = 'View the calculators provided by the Multi-Algorithm Runner service.';
 
-  constructor(public meta: Meta, public title: Title) { }
+  constructor(private titleService: Title, private metaService: Meta) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.titleService.setTitle(this.metaTitle);
+    this.metaService.addTags([
+      { name: 'description', content: this.metaDescription }
+    ]);
+  }
 
 }

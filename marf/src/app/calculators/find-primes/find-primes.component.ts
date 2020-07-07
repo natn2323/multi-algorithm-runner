@@ -3,13 +3,14 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { throwError, ObservableInput } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-find-primes',
   animations: [ // Can probably strip the entire "expander" into its own component
     trigger('expandCollapse', [
       state('activated', style({
-        transform: 'translateX(30px) rotate(90deg)'
+        transform: 'translateX(40px) rotate(90deg)'
       })),
       state('*', style({
 
@@ -26,9 +27,12 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   styleUrls: ['./find-primes.component.less']
 })
 export class FindPrimesComponent implements OnInit {
-  title: string = 'Prime Number Checker';
   configUrl: string = '/api/findprimes';
   maxNumberValue: number = 1000000;
+
+  pageTitle: string = 'Prime Number Checker';
+  metaTitle: string = 'Prime Number Checker';
+  metaDescription: string = `Accessible calculator for checking if a number is prime or not. This calculator can check if numbers up to ${this.maxNumberValue} are prime.`;
 
   input: string = null;
 
@@ -41,9 +45,14 @@ export class FindPrimesComponent implements OnInit {
   respMessage: string;
   respHasError: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private titleService: Title, private metaService: Meta) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.titleService.setTitle(this.metaTitle);
+    this.metaService.addTags([
+      { name: 'description', content: this.metaDescription }
+    ]);
+  }
 
   private parseInput(input: string): number[] {
     if (!input) {

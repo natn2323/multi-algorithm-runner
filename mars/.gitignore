@@ -3,12 +3,12 @@
 **/*.js.map
 
 # Typescript v1 declaration files
-typings/
+**/typings/
 
-node_modules/
+**/node_modules/
 
 # Generated folder from "npm run build"
-lib/
+**/lib/
 
 # Generated Firestore logs
 **/ui-debug.log

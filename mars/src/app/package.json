@@ -12,7 +12,7 @@
   "engines": {
     "node": "10"
   },
-  "main": "./lib/mars/src/index.js",
+  "main": "./lib/mars/src/app/index.js",
   "dependencies": {
     "express": "^4.17.1",
     "firebase": "^7.15.0",

@@ -1,8 +1,6 @@
 .prime-finder-container {
-    
     margin-left: 12.5%;
     margin-right: 15%;
-    height: 100%;
 
     .title {
         font-family: dotty;
@@ -11,17 +9,19 @@
 
     .input-group {
         padding-bottom: 7.5%; // Make space for the input hint
+        font-size: 20px;
 
         span {
             margin-right: 5px;
         }
 
         .input-hint {
-            font-size: x-small;
+            font-size: small;
             position: absolute;
         }
 
         input {
+            font-size: 20px;
             box-shadow: 
                 inset 0 -3em 3em rgba(0,0,0,0.1), 
                 // 0 0  0 2px rgb(255,255,255),
@@ -40,6 +40,7 @@
     }
 
     .mat-button {
+        font-size: 20px;
         margin-top: 10px;
         background-color: orange;
         border-radius: 20px;
@@ -58,6 +59,7 @@
     }
 
     .expander {
+        font-size: 20px;
         background-color: #59aafb;
         margin-top: 5%;
 
@@ -121,7 +123,7 @@
         }
 
         .hider.activated {
-            transform: translateX(5px);
+            transform: translateX(36px);
         }
 
         .expander-slider {
@@ -137,7 +139,7 @@
             border: 2px solid black;
             border-bottom: 0;
             transform: rotate(90deg);
-            margin-left: calc(30px - 2px);
+            margin-left: calc(50px - 2px);
             margin-top: -2px;
 
             transition-delay: 1s;
@@ -180,7 +182,7 @@
     }
 
     .expander.inProgress {
-        width: 100px;
+        width: 130px;
     }
 
     .expander.activated {
