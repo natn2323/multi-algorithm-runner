@@ -4,12 +4,16 @@
     <form class="vector-group">
         <div class="vector" tabindex="0">
             <div class="vector-label">Vector 1</div>
-            <input (keydown)="onInputKeyDown($event)" *ngFor="let row of vector1; let i = index;" type="number" name="vector1_{{i}}" [(ngModel)]="row.value">
+            <label>
+                <input id="vector1-label" (keydown)="onInputKeyDown($event)" *ngFor="let row of vector1; let i = index;" type="number" name="vector1_{{i}}" [(ngModel)]="row.value">
+            </label>
         </div>
 
         <div class="vector" tabindex="0">
             <div class="vector-label">Vector 2</div>
-            <input (keydown)="onInputKeyDown($event)" *ngFor="let row of vector2; let j = index;" type="number" name="vector2_{{j}}" [(ngModel)]="row.value">
+            <label>
+                <input (keydown)="onInputKeyDown($event)" *ngFor="let row of vector2; let j = index;" type="number" name="vector2_{{j}}" [(ngModel)]="row.value">
+            </label>
         </div>
 
         <button (click)="onSubmit()" style="display: none"></button>
