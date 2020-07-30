@@ -143,3 +143,9 @@ LighthouseRuns/
 
 # Ignore .vscode project settings
 .vscode/
+
+# Ignore automated tests output
+*bin/
+*obj/
+*TestResults/
+automated tests/.vs
