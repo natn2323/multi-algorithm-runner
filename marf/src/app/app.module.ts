@@ -14,6 +14,9 @@ import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FindPrimesComponent } from './calculators/find-primes/find-primes.component';
 import { AriaErrorIconComponent } from './shared/aria-error-icon/aria-error-icon.component';
+import { SideNavComponent } from './shared/side-nav/side-nav.component';
+import { MenuItemComponent } from './shared/menu-item/menu-item.component';
+import { MenuItemsComponent } from './shared/menu-items/menu-items.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { AriaErrorIconComponent } from './shared/aria-error-icon/aria-error-icon
     AboutComponent,
     PageNotFoundComponent,
     FindPrimesComponent,
-    AriaErrorIconComponent
+    AriaErrorIconComponent,
+    SideNavComponent,
+    MenuItemComponent,
+    MenuItemsComponent
   ],
   imports: [
     BrowserModule,

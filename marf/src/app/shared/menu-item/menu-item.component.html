@@ -1,0 +1,16 @@
+<div class="menu-item" (mousedown)="onMouseDown($event)" (keyup)="onKeyUp($event)">
+    <button #focusableItem class="styled-button" *ngIf="subItems && subItems.length > 0" [attr.aria-pressed]="isExpanded" [attr.aria-label]="item.label">
+        <span class="description">{{item.description}}</span>
+        <mat-icon class="dropdown-arrow" [ngClass]="{'expanded': isExpanded, 'collapsed': !isExpanded}">chevron_right</mat-icon>
+    </button>
+
+    <a #focusableItem class="styled-link" *ngIf="!subItems" [routerLink]="item.linkToRouter" [attr.aria-label]="item.label">
+        <span class="description">{{item.description}}</span>
+    </a>
+
+    <div class="sub-item" *ngIf="isExpanded && subItems && subItems.length > 0">
+        <div *ngFor="let subItem of subItems">
+            <app-menu-item [linkDescription]="subItem.description" [linkLabel]="subItem.label" [linkToRouter]="subItem.linkToRouter" [subItems]="subItem.subItems"></app-menu-item>
+        </div>
+    </div>
+</div>

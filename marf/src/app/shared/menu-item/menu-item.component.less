@@ -1,0 +1,86 @@
+.menu-item {
+    height: fit-content;
+
+    .description {
+        float: left;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        height: 100%;
+        white-space: nowrap;
+    }
+
+    .sub-item {
+        display: flow-root; // TODO: Check if using flow-root is okay...
+        overflow-x: hidden; // Prevent side scrollbar from appearing when subitem overflows.
+
+        // Prevent overlap of sub-item elements and menu-item elements. Basically a hack, so look to improve this later.
+        padding-top: 0.5%;
+        padding-bottom: 1%; 
+        // margin-top: 1%;
+        margin-bottom: 1%;
+
+        .description {
+
+            &::before {
+                margin-left: 5%;
+                content: "- ";
+            }
+        }
+    }
+
+    .styled-button, .styled-link {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: #DBDBDB;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: relative;
+        overflow: hidden;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: #b4b4b4;
+        }
+    }
+
+    .styled-button {
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+
+        .dropdown-arrow {
+            pointer-events: none;
+            position: absolute;
+            top: 5px;
+            right: 0px;
+
+            &.expanded {
+                transform: rotate(90deg);
+                transition: transform .15s;
+            }
+
+            &.collapsed {
+                transform: rotate(0deg);
+                transition: transform .15s;
+            }
+        }
+    }
+
+    .styled-link {
+        text-decoration: none;
+
+        .description {
+            height: 100%;
+            width: 100%;
+
+            &:hover {
+                background-color: #b4b4b4;
+            }
+        }
+
+        &:link, &:visited, &:hover, &:active {
+            color: black;
+        }
+    }
+}
