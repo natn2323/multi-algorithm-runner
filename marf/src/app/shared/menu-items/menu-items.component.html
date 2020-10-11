@@ -1,0 +1,3 @@
+<div class=".menu-items" *ngFor="let menuItem of menuItems">
+    <app-menu-item [linkDescription]="menuItem.description" [linkLabel]="menuItem.label" [linkToRouter]="menuItem.linkToRouter" [subItems]="menuItem.subItems"></app-menu-item>
+</div>

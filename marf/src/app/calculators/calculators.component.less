@@ -1,61 +1,30 @@
-.calculators-container {
-    height: 92.5%; // height = 100% - (mat-toolbar height)%
-    background-color: white;
-}
-
-.calculators-sidenav {
-    color: black;
-    padding: 20px;
-    border-right: 3px double darkgray;
-    background-color: #77889945;
-
-    @media (max-width: 640px) {
-        display: none;
-    }
-
-    :focus {
-        outline-color: black;
-        outline-style: dashed;
-        outline-width: thick;
-    }
-
-    button {
-        margin: 4px 4px 4px 4px;
-    }
-}
-
-.calculators-sidenav-content {
-    color: black;
-    display: flex;
+.main {
     height: 100%;
-    background-color: #77889945;
-
-    @media (max-height: 220px) {
-        height: fit-content;
+    display: flex;
+    flex-direction: row;
+    
+    .left {
+        flex-grow: 15;
+    }
+    
+    .center {
+        flex-grow: 50;
+    }
+    
+    .right {
+        flex-grow: 35;
     }
 
-    :focus {
-        outline-color: black;
-        outline-style: dashed;
-        outline-width: thick;
+    /* Create three unequal columns that floats next to each other */
+    .pane {
+        float: left;
+        height: 100%;
     }
 
-    .sidenav-toggle {
-        color: black;
-        position: absolute;
-        margin: 4px 4px 4px 4px;
-
-        @media (max-width: 640px) {
-            display: none;
-        }
-    }
-
-    .content {
-        width: 100%;
-        margin-top: 2.5%;
-
-        @media (max-width: 640px) {
-            margin-left: 2.5%;
-        }
+    /* Clear floats after the columns */
+    .pane:after {
+        content: "";
+        display: table;
+        clear: both;
     }
 }
