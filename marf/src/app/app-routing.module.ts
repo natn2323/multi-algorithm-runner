@@ -3,22 +3,25 @@ import { Routes, RouterModule } from '@angular/router';
 import { CalculatorsComponent } from './calculators/calculators.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DotProductFormComponent } from './calculators/dot-product/dot-product-form/dot-product-form.component';
-import { FindPrimesComponent } from './calculators/find-primes/find-primes.component';
 
 const routes: Routes = [
   { 
     path: 'calculators', 
     component: CalculatorsComponent,
     children: [
-      { 
-        path: 'dotproduct', 
-        component: DotProductFormComponent 
+      {
+        path: 'dotproduct',
+        loadChildren: () => import('./calculators/dot-product/dot-product.module').then(m => m.DotProductModule)
       },
       {
-        path: 'primenumber',
-        component: FindPrimesComponent
-      }
+        path: 'primenumbers',
+        loadChildren: () => import('./calculators/prime-numbers/prime-numbers.module').then(m => m.PrimeNumbersModule)
+      },
+      { 
+        path: '', 
+        redirectTo: '/calculators/dotproduct/interactive', // When root page is accessed, redirect to dot product calculator
+        pathMatch: 'full' 
+      },
     ]
   },
   { 
@@ -27,7 +30,7 @@ const routes: Routes = [
   },
   { 
     path: '', 
-    redirectTo: '/calculators/dotproduct', // When root page is accessed, redirect to dot product calculator
+    redirectTo: '/calculators/dotproduct/interactive', // When root page is accessed, redirect to dot product calculator
     pathMatch: 'full' 
   },
   { 

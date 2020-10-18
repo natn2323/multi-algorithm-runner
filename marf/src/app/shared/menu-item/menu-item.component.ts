@@ -7,7 +7,7 @@ import { MenuItem } from '../../../../../types'
   styleUrls: ['./menu-item.component.less']
 })
 export class MenuItemComponent implements OnInit {
-  // TODO: This is useful: "private route: ActivatedRoute"
+  
   @ViewChild('focusableItem') focusableItem: ElementRef;
   
   @Input() linkDescription: string;

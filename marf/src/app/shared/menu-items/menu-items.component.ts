@@ -39,7 +39,7 @@ export class MenuItemsComponent implements OnInit {
         { 
           description: 'Calculator', 
           label: 'Interactive prime number calculator.',
-          linkToRouter: '/calculators/primenumber' 
+          linkToRouter: '/calculators/primenumbers'
         },
         { // TODO: Create examples view
           description: 'Examples', 
