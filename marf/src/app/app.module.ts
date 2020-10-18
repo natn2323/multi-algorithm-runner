@@ -22,6 +22,8 @@ import { PrimeNumbersComponent } from './calculators/prime-numbers/prime-numbers
 import { DotProductModule } from './calculators/dot-product/dot-product.module';
 import { PrimeNumbersModule } from './calculators/prime-numbers/prime-numbers.module';
 import { UserInputComponent } from './shared/user-input/user-input.component';
+import { EntryComponent } from './shared/entry/entry.component';
+import { VectorComponent } from './shared/vector/vector.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { UserInputComponent } from './shared/user-input/user-input.component';
     MenuItemsComponent,
     DotProductComponent,
     PrimeNumbersComponent,
-    UserInputComponent
+    UserInputComponent,
+    EntryComponent,
+    VectorComponent
   ],
   imports: [
     BrowserModule,
