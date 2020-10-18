@@ -17,6 +17,11 @@ import { AriaErrorIconComponent } from './shared/aria-error-icon/aria-error-icon
 import { SideNavComponent } from './shared/side-nav/side-nav.component';
 import { MenuItemComponent } from './shared/menu-item/menu-item.component';
 import { MenuItemsComponent } from './shared/menu-items/menu-items.component';
+import { DotProductComponent } from './calculators/dot-product/dot-product.component';
+import { PrimeNumbersComponent } from './calculators/prime-numbers/prime-numbers.component';
+import { DotProductModule } from './calculators/dot-product/dot-product.module';
+import { PrimeNumbersModule } from './calculators/prime-numbers/prime-numbers.module';
+import { UserInputComponent } from './shared/user-input/user-input.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,10 @@ import { MenuItemsComponent } from './shared/menu-items/menu-items.component';
     AriaErrorIconComponent,
     SideNavComponent,
     MenuItemComponent,
-    MenuItemsComponent
+    MenuItemsComponent,
+    DotProductComponent,
+    PrimeNumbersComponent,
+    UserInputComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +48,9 @@ import { MenuItemsComponent } from './shared/menu-items/menu-items.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    DotProductModule,
+    PrimeNumbersModule
   ],
   providers: [],
   bootstrap: [AppComponent],
