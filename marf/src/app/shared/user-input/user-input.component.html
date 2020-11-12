@@ -1,8 +1,24 @@
 <div>
-    <div>
-        <span>Input a list:</span>
-        <app-vector></app-vector>
+    <div [ngSwitch]="inputType">
+        <div *ngSwitchCase="'vector'">
+            <table>
+                <tr *ngFor="let i of [].constructor(numberOfInputs); index as index">
+                    <td><span>Vector {{index+1}}:</span></td>
+                    <td (keydown)="onKeydown($event, index)"><app-vector #appInput></app-vector></td>
+                </tr>
+                <!-- <tr>
+                    <div>Example: 9, 39, 44</div>
+                </tr> -->
+            </table>
+        </div>
+
+        <div *ngSwitchCase="'matrix'">
+            <!-- TODO -->
+        </div>
+
+        <div *ngSwitchDefault>No default input type.</div>
     </div>
-    
-    <div>Example: 9, 39, 44</div>
+    <button (click)="appInput.clear()">Clear</button>
+    <button>Calculate</button>
+
 </div>

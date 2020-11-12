@@ -1,3 +1,1 @@
-<span *ngFor="let entry of this.entries">
-    <app-entry inputValue="{{entry}}"></app-entry>
-</span>
+<app-table [table]="this.table" (click)="onClick($event)" (userInputValueEvent)="onVectorChanges($event)"></app-table>

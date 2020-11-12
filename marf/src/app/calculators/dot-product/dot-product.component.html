@@ -2,6 +2,14 @@
     <h1>Dot Product Title element</h1>
     <h2>Description element</h2>
     <div>Keyboard Hotkeys Descriptor element</div>
-    <app-user-input></app-user-input>
+    
+    <mat-expansion-panel id="interactive-expansion">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Interactive</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-user-input inputType="vector" [numberOfInputs]="2"></app-user-input>
+    </mat-expansion-panel>
+
     <div>Results Display element</div>
 </div>

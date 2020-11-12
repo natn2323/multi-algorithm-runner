@@ -1,0 +1,14 @@
+<!-- Move through inputs: https://stackoverflow.com/questions/64496238/move-through-rows-of-a-table-using-arrows-keys-in-jquery -->
+<table>
+    <tr *ngFor="let row of this.table; index as rowIndex">
+        <td *ngFor="let col of row; index as colIndex">
+            <input [appAutoResize]="col.value"
+                type="text"
+                value="{{col.value}}"
+                [(ngModel)]="col.value"
+                (ngModelChange)="onInputModelChange($event)"
+                (change)="onInputValueChange(rowIndex, colIndex, $event)"
+            >
+        </td>
+    </tr>
+</table>

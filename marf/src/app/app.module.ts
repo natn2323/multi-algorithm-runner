@@ -22,8 +22,9 @@ import { PrimeNumbersComponent } from './calculators/prime-numbers/prime-numbers
 import { DotProductModule } from './calculators/dot-product/dot-product.module';
 import { PrimeNumbersModule } from './calculators/prime-numbers/prime-numbers.module';
 import { UserInputComponent } from './shared/user-input/user-input.component';
-import { EntryComponent } from './shared/entry/entry.component';
 import { VectorComponent } from './shared/vector/vector.component';
+import { TableComponent } from './shared/table/table.component';
+import { AutoResizeDirective } from './shared/auto-resize/auto-resize.directive';
 
 @NgModule({
   declarations: [
@@ -41,8 +42,9 @@ import { VectorComponent } from './shared/vector/vector.component';
     DotProductComponent,
     PrimeNumbersComponent,
     UserInputComponent,
-    EntryComponent,
-    VectorComponent
+    VectorComponent,
+    TableComponent,
+    AutoResizeDirective
   ],
   imports: [
     BrowserModule,
