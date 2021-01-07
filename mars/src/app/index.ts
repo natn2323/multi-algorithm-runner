@@ -6,7 +6,7 @@ import firebase from 'firebase';
 require('firebase/functions');
 
 firebase.initializeApp({
-    apiKey: 'AIzaSyDz24hxc95eYVochROjQ80onRmgRnA1G6g',
+    apiKey: process.env.API_KEY,
     projectId: 'multi-algorithm-runner',
 });
 
